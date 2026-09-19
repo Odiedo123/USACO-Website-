@@ -1,0 +1,1 @@
+The main goal of this is to redesign the USACO main page.
