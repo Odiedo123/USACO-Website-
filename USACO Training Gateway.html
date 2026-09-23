@@ -1,4 +1,223 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>USACO Training Gateway</title>
+<style>
+  body { font-family: Helvetica, Verdana, Tahoma, sans-serif, Arial; background-color: #e0f0e0; margin: 0; padding: 10px; }
+  a { color: #0000EE; }
+  .header-table, .chapter-table, .news-table { border-collapse: collapse; margin: 0 auto; }
+  .stat-box { background-color: #007000; border: 1px solid #000; color: #fff; text-align: center; font-family: Helvetica, Verdana, Tahoma, sans-serif; }
+  .stat-box td { padding: 2px 6px; }
+  .spacer { width: 15px; }
+  .announcement { color: purple; font-weight: bold; font-size: larger; text-align: center; padding-bottom: 4px; }
+  .news-box { border: 1px solid #000; padding: 6px; width: 220px; vertical-align: top; background-color: #EEFFEE; }
+  .news-box ul { padding-left: 18px; margin-top: 0; margin-bottom: 7px; }
+  .chapter-header { background-color: blue; color: yellow; font-size: 80%; text-align: center; padding: 2px; }
+  .ch-table { border: 1px solid #000; border-collapse: collapse; background-color: #EEFFEE; }
+  .ch-table td { border-color: blue; text-align: center; padding: 2px 4px; }
+  .done { color: #060; font-weight: bold; }
+  .todo { color: #888; }
+  .viewed { color: #06c; font-weight: bold; }
+  .submit-box { background-color: #fff; padding: 8px; border: 2px solid #000; margin-top: 5px; }
+  center { display: block; text-align: center; }
+</style>
+</head>
+<body>
+
+<center>
+
+<!-- Header -->
+<table class="header-table">
+<tr>
+  <td align="center" valign="middle">
+    <div style="font-size:32px;">üêÑ</div>
+  </td>
+  <td align="center" valign="middle">
+    <b style="font-size:150%;">USACO<br>TRAINING</b>
+  </td>
+  <td valign="middle">
+    <table class="stat-box">
+      <tr><td align="center"><b>1,681,627 Tasks Solved</b></td></tr>
+      <tr><td align="center"><b>2 users online</b></td></tr>
+      <tr><td align="center">IND/1 KEN/1</td></tr>
+    </table>
+  </td>
+  <td class="spacer"></td>
+  <td valign="top" style="text-align:left;">
+    <a href="#">Refresh this page</a><br>
+    <a href="#">Edit Personal Info</a><br>
+    <a href="#">Change Password</a><br>
+    <a href="mailto:rob.kolstad@gmail.com">Comment/Question</a><br>
+    <a href="#">Training Privacy Policy</a><br>
+  </td>
+  <td class="spacer"></td>
+  <td valign="top" style="text-align:left;">
+    <a href="#">Logout</a><br>
+    <a href="#">Change Language</a><br>
+    <a href="http://www.usaco.org/">USACO HOME</a><br>
+  </td>
+  <td class="spacer"></td>
+  <td style="font-size:80%; vertical-align:top;">
+    <center>Compiler Versions</center>
+    gcc version 13.3.0<br>
+    Python 3.12.3<br>
+    Java 25.0.1 2025-10-21<br>
+    Free Pascal 3.2.2+dfsg-9ubuntu1
+  </td>
+</tr>
+</table>
+
+<div style="height:6px;"></div>
+
+<!-- Announcement -->
+<div class="announcement">
+  7 Jan 2026: New Java!<br>
+  Please report problems to <a href="mailto:rob.kolstad@gmail.com">rob.kolstad@gmail.com</a> for prompt resolution.
+</div>
+
+<div style="margin:8px 0;">
+  Personalized Curriculum for <b>Jed Oloo</b> (odiedo11); Last visit: 1 day ago
+</div>
+
+<div style="margin-bottom:10px;">
+  <b>Next Problem: <a href="#">Transformations</a></b>
+</div>
+
+<!-- Main content: news + chapters -->
+<table class="news-table" style="border-collapse:collapse;">
+<tr>
+
+  <!-- News column -->
+  <td class="news-box" valign="top">
+    <center><b><big>NEWS</big></b></center>
+    <p><a href="http://www.usaco.org/index.php?page=contests">2025-2026 Contest Schedule</a></p>
+    <ul>
+      <li>Jan 9-12: First Contest</li>
+      <li>Jan 30-Feb 2: Second Contest</li>
+      <li>Feb 23-26: Third Contest</li>
+      <li>Mar 28: US Open (proctored)</li>
+      <li>May 12-18: EGOI 2026 (Italy)</li>
+      <li>May 21-30: Training Camp</li>
+      <li>Aug 9-16: IOI 2025 (Uzbekistan)</li>
+    </ul>
+
+    Other open competitions:
+    <ul>
+      <li><a href="http://www.codecup.nl/" target="_blank">The CodeCup Competition</a></li>
+      <li><a href="http://hsin.hr/coci/" target="_blank">Croatian Competition (monthly)</a></li>
+      <li><a href="http://codeforces.com/" target="_blank">CodeForces</a></li>
+      <li><a href="https://leetcode.com/" target="_blank">LeetCode</a></li>
+      <li><a href="https://atcoder.jp/" target="_blank">AtCoder (Japan) (new!)</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/Competitive_programming" target="_blank">Others (@Wikipedia)</a></li>
+    </ul>
+
+    Other training sites:
+    <ul>
+      <li><a href="https://coderbyte.com/" target="_blank">coderbyte</a></li>
+      <li><a href="https://www.codechef.com/" target="_blank">CodeChef *</a></li>
+      <li><a href="http://www.spoj.com/" target="_blank">Sphere online judge *</a></li>
+      <li><a href="https://exercism.io/" target="_blank">exercism</a></li>
+      <li><a href="https://codewars.com/" target="_blank">codewars</a></li>
+      <li><a href="https://codegym.cc/" target="_blank">CodeGym [Java]</a></li>
+      <li><a href="https://codepen.io/" target="_blank">Codepen</a></li>
+      <li><a href="https://codingame.com/" target="_blank">CodinGame [Fun]</a></li>
+      <li><a href="https://www.beecrowd.com.br/judge/en/login" target="_blank">beecrowd</a></li>
+      <li><a href="https://challenges.reply.com/" target="_blank">REPLY Challenges*</a></li>
+      <li><a href="https://cses.fi/problemset/" target="_blank">CSES Problems (Finland) (new!)</a></li>
+      <li><a href="https://open.kattis.com/" target="_blank">Kattis Problems (many prog. languages)* (new!)</a></li>
+    </ul>
+    &nbsp;&nbsp;* Contests, too
+  </td>
+
+  <td style="width:5px;"></td>
+
+  <!-- Chapter column -->
+  <td valign="top">
+    <table class="ch-table" cellpadding="4" cellspacing="0">
+      <tr><td colspan="4" class="chapter-header"><b>CHAPTER 1</b></td></tr>
+
+      <tr>
+        <td>Section 1.1</td>
+        <td class="done">DONE</td>
+        <td>2026.08.19</td>
+        <td style="text-align:left;"><a href="#">Introduction <span style="font-size:70%;">[1 Items]</span></a></td>
+      </tr>
+      <tr>
+        <td>Section 1.2</td>
+        <td class="done">DONE</td>
+        <td>2026.08.28</td>
+        <td style="text-align:left;"><a href="#">Submitting Soln, Task Types, Ad Hoc <span style="font-size:70%;">[7 Items]</span></a></td>
+      </tr>
+
+      <tr>
+        <td rowspan="6">Section 1.3</td>
+        <td class="done">DONE</td>
+        <td>2026.08.28</td>
+        <td style="text-align:left;"><a href="#">TEXT Complete Search</a></td>
+      </tr>
+      <tr>
+        <td class="done">DONE</td>
+        <td>2026.09.22</td>
+        <td style="text-align:left;"><a href="#">PROB Milking Cows</a> <a href="#">[ANALYSIS]</a></td>
+      </tr>
+      <tr>
+        <td class="viewed">VIEWED</td>
+        <td>2026.09.22</td>
+        <td style="text-align:left;"><a href="#">PROB Transformations</a></td>
+      </tr>
+      <tr>
+        <td class="todo">TODO</td>
+        <td>&nbsp;</td>
+        <td style="text-align:left;"><a href="#">PROB Name That Number</a></td>
+      </tr>
+      <tr>
+        <td class="todo">TODO</td>
+        <td>&nbsp;</td>
+        <td style="text-align:left;"><a href="#">PROB Palindromic Squares</a></td>
+      </tr>
+      <tr>
+        <td class="todo">TODO</td>
+        <td>&nbsp;</td>
+        <td style="text-align:left;"><a href="#">PROB Dual Palindromes</a></td>
+      </tr>
+
+      <tr>
+        <td>Section 1.4</td>
+        <td>0/8</td>
+        <td>&nbsp;</td>
+        <td style="text-align:left;">Greedy, Crafting Solutions <span style="font-size:70%;">[8 Items]</span></td>
+      </tr>
+      <tr>
+        <td>Section 1.5</td>
+        <td>0/3</td>
+        <td>&nbsp;</td>
+        <td style="text-align:left;">More Search Techniques <span style="font-size:70%;">[3 Items]</span></td>
+      </tr>
+      <tr>
+        <td>Section 1.6</td>
+        <td>0/4</td>
+        <td>&nbsp;</td>
+        <td style="text-align:left;">Binary Numbers <span style="font-size:70%;">[4 Items]</span></td>
+      </tr>
+
+      <tr><td>Chapter 2</td><td class="todo">TODO</td><td>&nbsp;</td><td style="text-align:left;">Bigger Challenges</td></tr>
+      <tr><td>Chapter 3</td><td class="todo">TODO</td><td>&nbsp;</td><td style="text-align:left;">Techniques more subtle</td></tr>
+      <tr><td>Chapter 4</td><td class="todo">TODO</td><td>&nbsp;</td><td style="text-align:left;">Advanced algorithms and difficult drills</td></tr>
+      <tr><td>Chapter 5</td><td class="todo">TODO</td><td>&nbsp;</td><td style="text-align:left;">Serious challenges</td></tr>
+      <tr><td>Chapter 6</td><td class="todo">TODO</td><td>&nbsp;</td><td style="text-align:left;">Contest Practice</td></tr>
+    </table>
+
+    <br>
+
+    <form action="#" enctype="multipart/form-data" method="POST">
+      <table class="submit-box">
+        <tr><td>
+          <b>Submit a solution:</b> <input type="file" name="filename">
+          <input type="submit" value="Send it in!">
+        </td></tr>
+      </table>
+    </form><html>
 
 <head>
 <title>USACO Training Gateway</title><link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
@@ -124,7 +343,7 @@ Web Contact <a href="/cdn-cgi/l/email-protection#83f1ece1ade8eceff0f7e2e7c3e4eee
 <span style='margin-right:0.07in;'>Phone 719-481-6542</span>
 <span style='margin-right:0.07in;'>:</span>
 <a href=/usaco/privacy.htm>Privacy Policy</a> <br>
-<span style='margin-right:0.07in;'>Copyright ©2020 Rob Kolstad,
+<span style='margin-right:0.07in;'>Copyright ÔøΩ2020 Rob Kolstad,
 					All rights reserved.</span>
 <span style='margin-right:0.07in;'>:</span>
 2026.09.19 1:07:42
@@ -132,5 +351,14 @@ Web Contact <a href="/cdn-cgi/l/email-protection#83f1ece1ade8eceff0f7e2e7c3e4eee
   </tr>
 </table>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495" integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==" data-cf-beacon='{"version":"2024.11.0","token":"17d930de92dc4362bc7971e7dc8c1d2b","r":1,"spa":2}' crossorigin="anonymous"></script>
+</body>
+</html>
+
+  </td>
+
+</tr>
+</table>
+
+</center>
 </body>
 </html>
