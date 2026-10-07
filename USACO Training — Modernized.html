@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>USACO Training — Modernized</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,600;1,6..72,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FFFFFF;
+    --panel:#FFFFFF;
+    --ink:#1C3327;
+    --ink-soft:#6B8577;
+    --pine:#1E4D8C;
+    --pine-deep:#15396B;
+    --surface-dark:#15396B;
+    --wheat:#4A9DED;
+    --wheat-soft:#ECF6FD;
+    --line:#E2E7EE;
+    --done:#2F6FE4;
+    --todo:#AAB3C0;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter',Helvetica,Arial,sans-serif;
+    font-size:15px;
+    line-height:1.5;
+  }
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1060px;margin:0 auto;padding:0 24px 64px;}
+
+  /* ---- top bar ---- */
+  .topbar{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px 24px;border-bottom:1px solid var(--line);
+    max-width:1060px;margin:0 auto;
+  }
+  .brand{display:flex;align-items:baseline;gap:10px;}
+  .brand-mark{
+    font-family:'Newsreader',serif;font-weight:600;font-size:22px;
+    color:var(--pine-deep);
+  }
+  .brand-sub{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.02em;color:var(--ink-soft);}
+  .nav{display:flex;gap:26px;font-size:13.5px;color:var(--ink-soft);}
+  .nav a:hover{color:var(--pine);}
+  .scoreboard{
+    display:flex;gap:0;font-family:'IBM Plex Mono',monospace;font-size:11px;
+    border:1px solid var(--surface-dark);border-radius:3px;overflow:hidden;
+  }
+  .scoreboard div{padding:6px 12px;background:var(--surface-dark);color:#EAF1FB;}
+  .scoreboard div+div{border-left:1px solid rgba(255,255,255,.15);}
+  .scoreboard b{color:#fff;font-weight:500;}
+  .theme-toggle{
+    width:30px;height:30px;margin-left:12px;flex-shrink:0;
+    border:1px solid var(--line);background:var(--panel);color:var(--ink);
+    border-radius:50%;font-size:14px;line-height:1;cursor:pointer;
+    display:inline-flex;align-items:center;justify-content:center;
+    padding:0;
+  }
+  .theme-toggle:hover{border-color:var(--surface-dark);}
+
+  /* ---- hero / greeting ---- */
+  .hero{
+    display:grid;grid-template-columns:1.3fr 1fr;gap:36px;
+    padding:44px 0 40px;border-bottom:1px solid var(--line);
+  }
+  .hero h1{
+    font-family:'Newsreader',serif;font-weight:500;font-style:italic;
+    font-size:40px;line-height:1.15;margin:0 0 14px;color:var(--pine-deep);
+  }
+  .hero p{color:var(--ink-soft);max-width:46ch;margin:0 0 22px;}
+  .cta{
+    display:inline-flex;align-items:center;gap:10px;
+    background:var(--surface-dark);color:#fff;padding:11px 18px;
+    font-size:13.5px;font-weight:500;border-radius:3px;
+  }
+  .cta span{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--wheat-soft);}
+
+  .progress-card{
+    background:var(--panel);border:1px solid var(--line);border-radius:4px;
+    padding:22px;position:relative;
+  }
+  .progress-card::before{
+    content:"";position:absolute;top:0;left:0;right:0;height:4px;
+    background:var(--wheat);
+  }
+  .progress-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px;}
+  .progress-top .label{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--ink-soft);letter-spacing:.03em;}
+  .progress-top .count{font-family:'Newsreader',serif;font-size:26px;color:var(--pine-deep);}
+  .bar-row{display:flex;align-items:center;gap:10px;margin-bottom:9px;font-size:12.5px;}
+  .bar-row .name{width:88px;color:var(--ink-soft);flex-shrink:0;}
+  .bar-track{flex:1;height:7px;background:var(--wheat-soft);border-radius:2px;overflow:hidden;}
+  .bar-fill{height:100%;background:var(--done);border-radius:2px;}
+  .bar-row .frac{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-soft);width:34px;text-align:right;}
+
+  /* ---- main grid ---- */
+  .main{display:grid;grid-template-columns:1fr 300px;gap:40px;padding-top:40px;}
+
+  .section-label{
+    font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.04em;
+    color:var(--wheat);margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid var(--pine-deep);
+    display:inline-block;
+  }
+
+  .chapter{margin-bottom:6px;}
+  .chapter-head{
+    display:flex;align-items:center;gap:12px;padding:14px 4px;
+    border-bottom:1px solid var(--line);cursor:default;
+  }
+  .chapter-head .num{
+    font-family:'Newsreader',serif;font-style:italic;color:var(--wheat);font-size:15px;width:20px;
+  }
+  .chapter-head .title{font-weight:500;flex:1;}
+  .chapter-head .meta{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-soft);}
+
+  .item{
+    display:flex;align-items:center;gap:14px;padding:9px 4px 9px 32px;
+    border-bottom:1px solid var(--line);font-size:13.5px;
+  }
+  .item:last-child{border-bottom:1px solid var(--line);}
+  .status{
+    font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.02em;
+    padding:2px 7px;border-radius:2px;flex-shrink:0;width:56px;text-align:center;
+  }
+  .status.done{background:rgba(44,176,91,.12);color:var(--done);}
+  .status.viewed{background:rgba(74,157,237,.14);color:var(--wheat);}
+  .status.todo{background:transparent;color:var(--todo);border:1px solid var(--line);}
+  .item .name{flex:1;}
+  .item .date{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-soft);}
+
+  .chapter-locked .title, .chapter-locked .meta{color:var(--todo);}
+  .chapter-locked{opacity:.7;}
+
+  /* ---- sidebar ---- */
+  .side-block{margin-bottom:32px;}
+  .side-block h3{
+    font-family:'Newsreader',serif;font-style:italic;font-weight:500;
+    font-size:17px;margin:0 0 12px;color:var(--pine-deep);
+  }
+  .news-item{padding:10px 0;border-bottom:1px solid var(--line);font-size:13px;}
+  .news-item:first-child{padding-top:0;}
+  .news-item .tag{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--wheat);display:block;margin-bottom:3px;}
+  .link-list a{display:block;padding:6px 0;font-size:13px;color:var(--ink-soft);border-bottom:1px solid var(--line);}
+  .link-list a:last-child{border-bottom:none;}
+  .link-list a:hover{color:var(--pine-deep);}
+
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#10151F; --panel:#171E2B; --ink:#E7EEF7; --ink-soft:#8F9CB0;
+      --pine:#5CA3F2; --pine-deep:#EAF1FB; --surface-dark:#2E6FD9; --wheat:#5CAEFA; --wheat-soft:#1B2E3F;
+      --line:#223047; --done:#5CA3F2; --todo:#6E7A8C;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#10151F; --panel:#171E2B; --ink:#E7EEF7; --ink-soft:#8F9CB0;
+    --pine:#5CA3F2; --pine-deep:#EAF1FB; --surface-dark:#2E6FD9; --wheat:#5CAEFA; --wheat-soft:#1B2E3F;
+    --line:#223047; --done:#5CA3F2; --todo:#6E7A8C;
+  }
+
+  @media (max-width:760px){
+    .hero{grid-template-columns:1fr;}
+    .main{grid-template-columns:1fr;}
+    .topbar{flex-wrap:wrap;gap:12px;}
+    .nav{order:3;width:100%;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand">
+    <span class="brand-mark">USACO</span>
+    <span class="brand-sub">TRAINING</span>
+  </div>
+  <div class="nav">
+    <a href="#">Curriculum</a>
+    <a href="#">Contests</a>
+    <a href="#">Judge</a>
+    <a href="#">Profile</a>
+  </div>
+  <div class="scoreboard">
+    <div><b>1,681,627</b> solved</div>
+    <div><b>2</b> online</div>
+  </div>
+  <button id="theme-toggle" class="theme-toggle" aria-label="Toggle light / dark mode" title="Toggle light / dark mode">🌙</button>
+</div>
+
+<div class="wrap">
+
+  <div class="hero">
+    <div>
+      <h1>Welcome back, Jed.</h1>
+      <p>You're on Section 1.3 of Chapter 1. Two problems finished this week — the streak's holding. Next up is a transformation problem that'll test your grid-rotation logic.</p>
+      <a class="cta">Resume: Transformations <span>SEC 1.3</span></a>
+    </div>
+    <div class="progress-card">
+      <div class="progress-top">
+        <span class="label">CHAPTER 1 PROGRESS</span>
+        <span class="count">34%</span>
+      </div>
+      <div class="bar-row"><span class="name">1.1 Intro</span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><span class="frac">1/1</span></div>
+      <div class="bar-row"><span class="name">1.2 Ad Hoc</span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><span class="frac">7/7</span></div>
+      <div class="bar-row"><span class="name">1.3 Search</span><div class="bar-track"><div class="bar-fill" style="width:33%"></div></div><span class="frac">2/6</span></div>
+      <div class="bar-row"><span class="name">1.4 Greedy</span><div class="bar-track"><div class="bar-fill" style="width:0%"></div></div><span class="frac">0/8</span></div>
+    </div>
+  </div>
+
+  <div class="main">
+    <div>
+      <div class="section-label">CURRICULUM</div>
+
+      <div class="chapter">
+        <div class="chapter-head"><span class="num">1.1</span><span class="title">Introduction</span><span class="meta">1 item · done</span></div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-head"><span class="num">1.2</span><span class="title">Submitting Solutions, Task Types, Ad Hoc</span><span class="meta">7 items · done</span></div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-head"><span class="num">1.3</span><span class="title">Complete Search</span><span class="meta">2 of 6 done</span></div>
+        <div class="item"><span class="status done">DONE</span><span class="name">Milking Cows <em style="color:var(--wheat);font-style:normal;">— analysis available</em></span><span class="date">09.22</span></div>
+        <div class="item"><span class="status viewed">VIEWED</span><span class="name">Transformations</span><span class="date">09.22</span></div>
+        <div class="item"><span class="status todo">TODO</span><span class="name">Name That Number</span><span class="date">—</span></div>
+        <div class="item"><span class="status todo">TODO</span><span class="name">Palindromic Squares</span><span class="date">—</span></div>
+        <div class="item"><span class="status todo">TODO</span><span class="name">Dual Palindromes</span><span class="date">—</span></div>
+      </div>
+
+      <div class="chapter chapter-locked">
+        <div class="chapter-head"><span class="num">1.4</span><span class="title">Greedy, Crafting Solutions</span><span class="meta">0 of 8</span></div>
+      </div>
+      <div class="chapter chapter-locked">
+        <div class="chapter-head"><span class="num">1.5</span><span class="title">More Search Techniques</span><span class="meta">0 of 3</span></div>
+      </div>
+      <div class="chapter chapter-locked">
+        <div class="chapter-head"><span class="num">1.6</span><span class="title">Binary Numbers</span><span class="meta">0 of 4</span></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="side-block">
+        <h3>News</h3>
+        <div class="news-item"><span class="tag">7 JAN 2026</span>New Java runtime is live — report issues to the maintainers.</div>
+        <div class="news-item"><span class="tag">CONTEST SCHEDULE</span>US Open (proctored) — Mar 28. Training Camp — May 21–30.</div>
+      </div>
+
+      <div class="side-block">
+        <h3>Also training on</h3>
+        <div class="link-list">
+          <a href="#">CodeForces</a>
+          <a href="#">AtCoder</a>
+          <a href="#">CSES Problem Set</a>
+          <a href="#">Kattis</a>
+          <a href="#">LeetCode</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  var root = document.documentElement;
+  var btn = document.getElementById('theme-toggle');
+
+  function systemPrefersDark(){
+    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  }
+  function getStored(){
+    try { return localStorage.getItem('usaco-theme'); } catch(e) { return null; }
+  }
+  function setStored(v){
+    try { localStorage.setItem('usaco-theme', v); } catch(e) {}
+  }
+  function apply(theme){
+    if (theme === 'dark' || theme === 'light') {
+      root.setAttribute('data-theme', theme);
+      btn.textContent = theme === 'dark' ? '☀️' : '🌙';
+    } else {
+      root.removeAttribute('data-theme');
+      btn.textContent = systemPrefersDark() ? '☀️' : '🌙';
+    }
+  }
+
+  var stored = getStored();
+  apply(stored);
+
+  btn.addEventListener('click', function(){
+    var current = root.getAttribute('data-theme');
+    var isDark = current ? current === 'dark' : systemPrefersDark();
+    var next = isDark ? 'light' : 'dark';
+    setStored(next);
+    apply(next);
+  });
+})();
+</script>
+</body>
+</html>
